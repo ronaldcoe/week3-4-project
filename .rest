@@ -1,0 +1,90 @@
+### Get all patients
+GET http://localhost:3000/patients
+
+
+### Get patient by id
+GET http://localhost:3000/patients/655814b811aacecfb7381159
+
+###Create patient
+POST http://localhost:3000/patients/create_patient
+Content-Type: application/json
+
+{
+    "firstName": "Ronald",
+    "lastName": "Coello",
+    "dateOfBirth": "1994-07-21",
+    "gender": "Male",
+    "contactNumber": "801-555-5555",
+    "emailAddress": "ronaldcoello@email.com",
+    "address": "291 E 7th S",
+    "allergies": [
+    "Penicillin",
+    "Peanuts"
+    ],
+    "medicalHistory": "History of hypertension."
+
+}
+
+### Delete patient by id
+DELETE http://localhost:3000/patients/delete_patient/655814b811aacecfb7381159
+
+
+
+### Update patient by id
+PUT http://localhost:3000/patients/update_patient/65584747fa5617ba10b998c9
+Content-Type: application/json
+
+{
+    "firstName": "Rony",
+    "lastName": "Diaz",
+    "dateOfBirth": "1994-07-21",
+    "gender": "Male",
+    "contactNumber": "801-555-5555",
+    "emailAddress": "ronaldcoello@email.com",
+    "address": "291 E 7th S",
+    "allergies": [
+    "Penicillin",
+    "Peanuts"
+    ],
+    "medicalHistory": "History of hypertension."
+}
+
+
+
+
+
+### Get Appointments
+GET http://localhost:3000/appointments
+
+### Get Appointment by id
+GET http://localhost:3000/appointments/6558162511aacecfb7381162
+
+### Create Appointment
+POST http://localhost:3000/appointments/create_appointment
+Content-Type: application/json
+
+{
+    "doctorId": "D3002",
+    "appointmentDate": "2023-11-21T14:30:00",
+    "purpose": "Cold Follow-Up",
+    "status": "Scheduled",
+    "notes": "Regular check.",
+    "patientId": "6558240a4dd4112f37b23141"
+}
+
+### Delete Appointment by id
+DELETE http://localhost:3000/appointments/delete_appointment/6558281348f46cd757d91e09
+
+
+### Update Appointment by id
+PUT http://localhost:3000/appointments/update_appointment/655826c56461ed8be1fbc0ec
+Content-Type: application/json
+
+{
+    "doctorId": "D3002",
+    "appointmentDate": "2023-11-21T14:30:00",
+    "purpose": "Test",
+    "status": "Scheduled",
+    "notes": "Regular check.",
+    "patientId": "6558240a4dd4112f37b23141"
+}

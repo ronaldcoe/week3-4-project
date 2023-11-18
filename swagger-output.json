@@ -1,0 +1,435 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Clinic API",
+    "description": "The Clinic API provides the endpoints for the clinic API",
+    "version": "1.0.0"
+  },
+  "host": "cse341-mz1u.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/patients": {
+      "get": {
+        "tags": [
+          "Patients"
+        ],
+        "description": "Endpoint to get all patients",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/patients/{id}": {
+      "get": {
+        "tags": [
+          "Patients"
+        ],
+        "description": "Endpoint to get a patient by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/patients/create_patient": {
+      "post": {
+        "tags": [
+          "Patients"
+        ],
+        "description": "Endpoint to create a patient",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Object containing the patient information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "dateOfBirth": {
+                  "type": "string",
+                  "example": "1990-01-01"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "Male"
+                },
+                "contactNumber": {
+                  "type": "string",
+                  "example": "123-4567-890"
+                },
+                "emailAddress": {
+                  "type": "string",
+                  "example": "jhon@mail.com"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "123 Main St."
+                },
+                "allergies": {
+                  "type": "array",
+                  "example": [
+                    "Peanuts"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "medicalHistory": {
+                  "type": "string",
+                  "example": "None"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "gender",
+                "contactNumber",
+                "emailAddress",
+                "address",
+                "allergies",
+                "medicalHistory"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/patients/delete_patient/{id}": {
+      "delete": {
+        "tags": [
+          "Patients"
+        ],
+        "description": "Endpoint to delete a patient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/patients/update_patient/{id}": {
+      "put": {
+        "tags": [
+          "Patients"
+        ],
+        "description": "Endpoint to update a patient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Object containing the patient information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "dateOfBirth": {
+                  "type": "string",
+                  "example": "1990-01-01"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "Male"
+                },
+                "contactNumber": {
+                  "type": "string",
+                  "example": "123-4567-890"
+                },
+                "emailAddress": {
+                  "type": "string",
+                  "example": "jhon@mail.com"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "123 Main St."
+                },
+                "allergies": {
+                  "type": "array",
+                  "example": [
+                    "Peanuts"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "medicalHistory": {
+                  "type": "string",
+                  "example": "None"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "gender",
+                "contactNumber",
+                "emailAddress",
+                "address",
+                "allergies",
+                "medicalHistory"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/appointments": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "Endpoint to get all appointments",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/appointments/{id}": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "Endpoint to get an appointment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/appointments/create_appointment": {
+      "post": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "Endpoint to create an appointment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Object containing the appointment information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "doctorId": {
+                  "type": "string",
+                  "example": "D3002"
+                },
+                "appointmentDate": {
+                  "type": "string",
+                  "example": "2021-03-01T08:00:00.000Z"
+                },
+                "purpose": {
+                  "type": "string",
+                  "example": "Checkup"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Scheduled"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Regular checkup"
+                },
+                "patientId": {
+                  "type": "string",
+                  "example": "6558240a4dd4112f37b23141"
+                }
+              },
+              "required": [
+                "doctorId",
+                "appointmentDate",
+                "purpose",
+                "status",
+                "notes",
+                "patientId"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/appointments/delete_appointment/{id}": {
+      "delete": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "Endpoint to delete an appointment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/appointments/update_appointment/{id}": {
+      "put": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "Endpoint to update an appointment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Object containing the appointment information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "doctorId": {
+                  "type": "string",
+                  "example": "D3002"
+                },
+                "appointmentDate": {
+                  "type": "string",
+                  "example": "2021-03-01T08:00:00.000Z"
+                },
+                "purpose": {
+                  "type": "string",
+                  "example": "Checkup"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Scheduled"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Regular checkup"
+                },
+                "patientId": {
+                  "type": "string",
+                  "example": "6558240a4dd4112f37b23141"
+                }
+              },
+              "required": [
+                "doctorId",
+                "appointmentDate",
+                "purpose",
+                "status",
+                "notes",
+                "patientId"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
