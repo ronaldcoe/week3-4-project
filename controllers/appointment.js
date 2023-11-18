@@ -5,6 +5,7 @@ const ObjectId = require('mongodb').ObjectId
 const getAllAppointments = async(req, res, next) => {
     const result = await mongodb.getDb().db('clinicdb').collection("appointments").find().toArray()
     res.json(result)
+
 }
 const getAppointmentById = async(req, res, next) => {
     const result = await mongodb.getDb().db("clinicdb").collection("appointments").findOne({_id: new ObjectId(req.params.id)
@@ -56,6 +57,10 @@ const deleteAppointment = async(req, res, next) => {
 }
 
 const updateAppointment = async(req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const userId = new ObjectId(req.params.id); 
     const {doctorId, appointmentDate, purpose, status, notes, patientId} = req.body;
 

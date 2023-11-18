@@ -42,7 +42,7 @@ router.post('/create_patient', patientController.patientValidationRules, (req, r
             }
         }
     */
-    patientController.createPatient
+    patientController.createPatient(req, res)
 });
 
 router.delete('/delete_patient/:id', (req, res) => {

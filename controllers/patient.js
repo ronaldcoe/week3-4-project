@@ -19,7 +19,7 @@ const patientValidationRules = [
     check('dateOfBirth').notEmpty().withMessage('Date of birth is required'),
     check('gender').notEmpty().withMessage('Gender is required'),
     check('contactNumber').isMobilePhone().withMessage('Invalid contact number'),
-    check('emailAddress').isEmail().withMessage('Invalid email address'),
+    check('emailAddress').notEmpty().isEmail().withMessage('Invalid email address'),
     check('address').notEmpty().withMessage('Address is required'),
     check('allergies').optional().isArray().withMessage('Allergies must be an array'),
     check('medicalHistory').optional()
@@ -62,6 +62,10 @@ const deletePatient = async(req, res, next) => {
 }
 
 const updatePatient = async(req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const {firstName, lastName, dateOfBirth, gender, contactNumber, 
         emailAddress, address, alergies, medicalHistory,} = req.body
     const userId = new ObjectId(req.params.id);

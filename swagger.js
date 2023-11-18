@@ -5,7 +5,7 @@ const doc = {
         title: 'Clinic API',
         description: 'The Clinic API provides the endpoints for the clinic API'
     },
-    host: 'cse341-mz1u.onrender.com',
+    host: 'cse-341-project2-0zh1.onrender.com',
     schemes: ['https'],
 };
 
