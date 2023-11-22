@@ -15,7 +15,7 @@ router.get('/', authenticate.isAuthenticated, (req, res)=> {
     appointmentController.getAllAppointments(req, res);
 });
 
-router.get('/:id', (req, res)=> {
+router.get('/:id', authenticate.isAuthenticated, (req, res)=> {
     /* 
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to get an appointment by ID'
@@ -45,7 +45,7 @@ router.post('/create_appointment', authenticate.isAuthenticated, appointmentCont
     appointmentController.createAppointment(req, res)
 })
 
-router.delete('/delete_appointment/:id', (req, res)=> {
+router.delete('/delete_appointment/:id', authenticate.isAuthenticated, (req, res)=> {
     /* 
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to delete an appointment'
@@ -54,7 +54,7 @@ router.delete('/delete_appointment/:id', (req, res)=> {
     appointmentController.deleteAppointment(req, res)
 })
 
-router.put('/update_appointment/:id', appointmentController.appointmentValidationRules, (req, res)=> {
+router.put('/update_appointment/:id', authenticate.isAuthenticated, appointmentController.appointmentValidationRules, (req, res)=> {
     /*
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to update an appointment'
