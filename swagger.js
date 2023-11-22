@@ -11,7 +11,7 @@ const doc = {
         OAuth2: {
             type: 'oauth2',
             authorizationUrl: 'https://cse-341-project2-0zh1.onrender.com/login',
-            tokenUrl: 'https://example.com/oauth/token',
+            tokenUrl: 'https://github.com/login/oauth/access_token',
             flow: 'accessCode', // or 'implicit', 'password', or 'application' depending on your OAuth2 flow
             scopes: {
                 read: 'Read access to protected resources',
