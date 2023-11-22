@@ -4,11 +4,13 @@ const appointmentController = require('../controllers/appointment')
 const authenticate = require('../middleware/authenticate')
 
 
+
 router.get('/', authenticate.isAuthenticated, (req, res)=> {
     /* 
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to get all appointments'
         #swagger.path = '/appointments'
+       
     */
     appointmentController.getAllAppointments(req, res);
 });

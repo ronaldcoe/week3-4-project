@@ -5,11 +5,23 @@
     "description": "The Clinic API provides the endpoints for the clinic API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse-341-project2-0zh1.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "authorizationUrl": "http://localhost:3000/login",
+      "tokenUrl": "https://example.com/oauth/token",
+      "flow": "accessCode",
+      "scopes": {
+        "read": "Read access to protected resources",
+        "write": "Write access to protected resources"
+      }
+    }
+  },
   "paths": {
     "/patients": {
       "get": {
@@ -20,6 +32,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -41,6 +56,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -149,6 +167,9 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -241,6 +262,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -259,6 +283,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -340,6 +367,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -446,5 +476,13 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "OAuth2": [
+        "read",
+        "write"
+      ]
+    }
+  ]
 }

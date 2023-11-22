@@ -10,8 +10,21 @@ const GitHubStrategy = require('passport-github2').Strategy;
 const app = express()
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
+const dotenv = require('dotenv');
+dotenv.config();
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
+    oauth2RedirectUrl: 'http://localhost:3000/api-docs/oauth2-redirect.html',
+    oauth: {
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        realm: "your-realm",
+        appName: "your-app-name",
+        scopeSeparator: " ",
+        additionalQueryStringParams: {},
+        useBasicAuthenticationWithAccessCodeGrant: true,
+        usePkceWithAuthorizationCodeGrant: true
+    }}));
 
 
 app
