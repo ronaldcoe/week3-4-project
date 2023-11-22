@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const patientController = require('../controllers/patient')
+const authenticate = require('../middleware/authenticate')
 
-router.get('/', (req, res) => {
+router.get('/', authenticate.isAuthenticated, (req, res) => {
     /* 
         #swagger.tags = ['Patients']
         #swagger.description = 'Endpoint to get all patients'
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
     patientController.getAllPatients(req, res); 
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticate.isAuthenticated, (req, res) => {
     /* 
         #swagger.tags = ['Patients']
         #swagger.description = 'Endpoint to get a patient by ID'
@@ -21,7 +22,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/create_patient', patientController.patientValidationRules, (req, res) => {
+router.post('/create_patient', authenticate.isAuthenticated, patientController.patientValidationRules, (req, res) => {
     /* 
         #swagger.tags = ['Patients']
         #swagger.description = 'Endpoint to create a patient'
@@ -45,7 +46,7 @@ router.post('/create_patient', patientController.patientValidationRules, (req, r
     patientController.createPatient(req, res)
 });
 
-router.delete('/delete_patient/:id', (req, res) => {
+router.delete('/delete_patient/:id', authenticate.isAuthenticated, (req, res) => {
     /* 
         #swagger.tags = ['Patients']
         #swagger.description = 'Endpoint to delete a patient'
@@ -54,7 +55,7 @@ router.delete('/delete_patient/:id', (req, res) => {
     patientController.deletePatient(req, res)
 });
 
-router.put('/update_patient/:id', patientController.patientValidationRules, (req, res) => {
+router.put('/update_patient/:id', authenticate.isAuthenticated, patientController.patientValidationRules, (req, res) => {
     /*
     
         #swagger.tags = ['Patients']

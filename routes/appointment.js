@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const appointmentController = require('../controllers/appointment')
+const authenticate = require('../middleware/authenticate')
 
 
-router.get('/', (req, res)=> {
+router.get('/', authenticate.isAuthenticated, (req, res)=> {
     /* 
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to get all appointments'
@@ -21,7 +22,7 @@ router.get('/:id', (req, res)=> {
     appointmentController.getAppointmentById(req, res)
 });
 
-router.post('/create_appointment', appointmentController.appointmentValidationRules, (req, res)=> {
+router.post('/create_appointment', authenticate.isAuthenticated, appointmentController.appointmentValidationRules, (req, res)=> {
     /*
         #swagger.tags = ['Appointments']
         #swagger.description = 'Endpoint to create an appointment'

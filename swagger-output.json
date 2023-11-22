@@ -5,10 +5,10 @@
     "description": "The Clinic API provides the endpoints for the clinic API",
     "version": "1.0.0"
   },
-  "host": "cse-341-project2-0zh1.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/patients": {
@@ -121,6 +121,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
